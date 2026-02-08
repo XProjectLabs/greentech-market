@@ -94,35 +94,69 @@
         left: calc(50% - 25px);
         opacity: 0.2;
     }
+
+    .alert {
+        text-align: center;
+        padding: 10px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
 </style>
 </head>
 <body>
 
-<form action="#" method="POST">
+<form action="{{ route('products.store') }}" method="POST">
+    @csrf
     <h1>Ajouter un Produit</h1>
 
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <label for="name">Nom du produit</label>
-    <input type="text" id="name" name="name" placeholder="Nom du produit" required>
+    <input type="text" id="name" name="name" placeholder="Nom du produit" value="{{ old('name') }}" required>
 
     <label for="description">Description</label>
-    <textarea id="description" name="description" placeholder="Description du produit" required></textarea>
+    <textarea id="description" name="description" placeholder="Description du produit" required>{{ old('description') }}</textarea>
 
     <label for="price">Prix (€)</label>
-    <input type="number" id="price" name="price" placeholder="Prix" step="0.01" required>
+    <input type="number" id="price" name="price" placeholder="Prix" step="0.01" value="{{ old('price') }}" required>
 
     <label for="stock">Stock</label>
-    <input type="number" id="stock" name="stock" placeholder="Quantité en stock" required>
+    <input type="number" id="stock" name="stock" placeholder="Quantité en stock" value="{{ old('stock') }}" required>
 
     <label for="category">Catégorie</label>
-    <select id="category" name="category" required>
+    <select id="category" name="category_id" required>
         <option value="">-- Sélectionner --</option>
-        <option value="plantes">Plantes</option>
-        <option value="graines">Graines</option>
-        <option value="outils">Outils</option>
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                {{ $category->name }}
+            </option>
+        @endforeach
     </select>
 
     <label for="image_url">URL de l'image</label>
-    <input type="text" id="image_url" name="image_url" placeholder="https://example.com/image.jpg">
+    <input type="text" id="image_url" name="image_url" placeholder="https://example.com/image.jpg" value="{{ old('image_url') }}">
 
     <button type="submit">Ajouter le produit</button>
 </form>

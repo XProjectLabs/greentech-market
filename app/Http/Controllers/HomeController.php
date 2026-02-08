@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index()
     {
         $products = product::with('category')
-        ->latest()
+        ->orderBy('id', 'desc')
         ->take(4)
         ->get();
         return view('welcome', compact('products'));
