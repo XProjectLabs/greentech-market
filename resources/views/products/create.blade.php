@@ -1,121 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ajouter un Produit - GreenTech</title>
-<style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: #eafaf1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        padding: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Produit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    form {
-        background: #ffffff;
-        padding: 30px 40px;
-        border-radius: 12px;
-        box-shadow: 0 6px 15px rgba(0, 128, 0, 0.15);
-        width: 400px;
-        border-top: 5px solid #28a745;
-        position: relative;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
 
-    h1 {
-        text-align: center;
-        margin-bottom: 25px;
-        color: #2f6f3e;
-        font-size: 24px;
-    }
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-    label {
-        display: block;
-        margin-bottom: 6px;
-        font-weight: bold;
-        color: #3a5d3a;
-    }
+        h1 {
+            color: #2c5530;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
 
-    input[type="text"],
-    input[type="number"],
-    select,
-    textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 18px;
-        border: 1px solid #b3d9b3;
-        border-radius: 6px;
-        font-size: 14px;
-        transition: all 0.3s;
-    }
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-    input[type="text"]:focus,
-    input[type="number"]:focus,
-    select:focus,
-    textarea:focus {
-        border-color: #28a745;
-        box-shadow: 0 0 5px rgba(40, 167, 69, 0.4);
-        outline: none;
-    }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
 
-    textarea {
-        resize: vertical;
-        min-height: 80px;
-    }
+        label .required {
+            color: #e74c3c;
+        }
 
-    select {
-        background-color: #f0fff4;
-    }
+        input[type="text"],
+        input[type="number"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
 
-    button {
-        width: 100%;
-        padding: 12px;
-        background: #28a745;
-        color: #fff;
-        font-size: 16px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #2c5530;
+        }
 
-    button:hover {
-        background: #218838;
-    }
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
 
-    form::before {
-        content: "🌿";
-        font-size: 50px;
-        position: absolute;
-        top: -25px;
-        left: calc(50% - 25px);
-        opacity: 0.2;
-    }
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
 
-    .alert {
-        text-align: center;
-        padding: 10px;
-        border-radius: 6px;
-        margin-bottom: 20px;
-    }
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
 
-    .alert-success {
-        background-color: #d4edda;
-        color: #155724;
-    }
+        .btn-primary {
+            background: #2c5530;
+            color: white;
+        }
 
-    .alert-danger {
-        background-color: #f8d7da;
-        color: #721c24;
-    }
-</style>
+        .btn-primary:hover {
+            background: #1e3a20;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 85, 48, 0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .mb-0 {
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 <body>
 
-<form action="{{ route('products.store') }}" method="POST">
+<form action="{{ route('admin.products.store') }}" method="POST">
     @csrf
     <h1>Ajouter un Produit</h1>
 
@@ -133,32 +161,83 @@
         </div>
     @endif
 
-    <label for="name">Nom du produit</label>
-    <input type="text" id="name" name="name" placeholder="Nom du produit" value="{{ old('name') }}" required>
+    <div class="form-group">
+        <label for="name">
+            Nom du produit <span class="required">*</span>
+        </label>
+        <input type="text" 
+               id="name" 
+               name="name" 
+               value="{{ old('name') }}" 
+               required
+               maxlength="150">
+    </div>
 
-    <label for="description">Description</label>
-    <textarea id="description" name="description" placeholder="Description du produit" required>{{ old('description') }}</textarea>
+    <div class="form-group">
+        <label for="description">
+            Description <span class="required">*</span>
+        </label>
+        <textarea id="description" 
+                  name="description" 
+                  required>{{ old('description') }}</textarea>
+    </div>
 
-    <label for="price">Prix (€)</label>
-    <input type="number" id="price" name="price" placeholder="Prix" step="0.01" value="{{ old('price') }}" required>
+    <div class="form-group">
+        <label for="category_id">
+            Catégorie <span class="required">*</span>
+        </label>
+        <select id="category_id" name="category_id" required>
+            <option value="">-- Sélectionner une catégorie --</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                    {{ $category->name }}
+                </option>
+            @endforeach
+        </select>
+    </div>
 
-    <label for="stock">Stock</label>
-    <input type="number" id="stock" name="stock" placeholder="Quantité en stock" value="{{ old('stock') }}" required>
+    <div class="form-group">
+        <label for="price">
+            Prix (MAD) <span class="required">*</span>
+        </label>
+        <input type="number" 
+               id="price" 
+               name="price" 
+               value="{{ old('price') }}" 
+               step="0.01" 
+               min="0" 
+               required>
+    </div>
 
-    <label for="category">Catégorie</label>
-    <select id="category" name="category_id" required>
-        <option value="">-- Sélectionner --</option>
-        @foreach($categories as $category)
-            <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
-                {{ $category->name }}
-            </option>
-        @endforeach
-    </select>
+    <div class="form-group">
+        <label for="stock">
+            Stock <span class="required">*</span>
+        </label>
+        <input type="number" 
+               id="stock" 
+               name="stock" 
+               value="{{ old('stock') }}" 
+               min="0" 
+               required>
+    </div>
 
-    <label for="image_url">URL de l'image</label>
-    <input type="text" id="image_url" name="image_url" placeholder="https://example.com/image.jpg" value="{{ old('image_url') }}">
+    <div class="form-group">
+        <label for="image_url">
+            URL de l'image
+        </label>
+        <input type="url" 
+               id="image_url" 
+               name="image_url" 
+               value="{{ old('image_url') }}" 
+               placeholder="https://example.com/image.jpg"
+               maxlength="255">
+    </div>
 
-    <button type="submit">Ajouter le produit</button>
+    <div class="form-actions">
+        <a href="{{ route('admin.products') }}" class="btn btn-secondary">Annuler</a>
+        <button type="submit" class="btn btn-primary">Ajouter le produit</button>
+    </div>
+
 </form>
 
 </body>

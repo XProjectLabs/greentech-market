@@ -33,8 +33,8 @@
         </p>
 
         <div class="d-flex justify-content-center gap-3">
-            <a href="#catalogue" class="btn btn-green">Explorer la boutique →</a>
-            <a href="#catalogue" class="btn btn-outline-green">Voir les nouveautés</a>
+            <a href="/products" class="btn btn-green">Explorer la boutique →</a>
+            <a href="/" class="btn btn-outline-green">Voir les nouveautés</a>
         </div>
     </div>
 </section>

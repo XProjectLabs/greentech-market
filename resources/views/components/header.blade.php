@@ -123,7 +123,7 @@
         <div class="collapse navbar-collapse" id="nav">
             <ul class="navbar-nav ms-auto gap-4">
                 <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
-                <li class="nav-item"><a class="nav-link" href="/catalogue">Boutique</a></li>
+                <li class="nav-item"><a class="nav-link" href="/products">Boutique</a></li>
             </ul>
         </div>
 

@@ -542,7 +542,7 @@
                     <input type="text" 
                            name="search" 
                            class="search-input"
-                           placeholder="🔍 Rechercher un produit..." 
+                           placeholder=" Rechercher un produit..." 
                            value="{{ request('search') }}">
                     <button type="submit" class="btn-search">Rechercher</button>
                 </div>
