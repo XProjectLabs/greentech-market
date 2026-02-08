@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -23,7 +22,6 @@
         <span class="badge badge-green px-4 py-2 rounded-pill">
             Boutique écologique en ligne
         </span>
-
         <h1 class="display-5 fw-bold mt-4">
             Des produits durables<br>
             pour un <span style="color:#b7ff5a">mode de vie responsable</span>
@@ -51,67 +49,26 @@
         </div>
 
         <div class="row g-4">
-
-            <div class="col-md-3">
-                <div class="product-card-natural">
-                    <div class="product-img">
-                        <img src="https://d2j6dbq0eux0bg.cloudfront.net/images/20181022/3003382609.jpg">
-                    </div>
-                    <div class="product-body">
-                        <h6>Aloe Vera Naturelle</h6>
-                        <span class="category">Plantes</span>
-                        <div class="price">120 MAD</div>
-                        <a href="#" class="btn btn-green w-100 mt-3">Voir le produit</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="product-card-natural">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
-                    </div>
-                    <div class="product-body">
-                        <h6>Aloe Vera Naturelle</h6>
-                        <span class="category">Plantes</span>
-                        <div class="price">120 MAD</div>
-                        <a href="#" class="btn btn-green w-100 mt-3">Voir le produit</a>
+            @forelse($products as $product)
+                <div class="col-md-3">
+                    <div class="product-card-natural">
+                        <div class="product-img">
+                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}">
+                        </div>
+                        <div class="product-body">
+                            <h6>{{ $product->name }}</h6>
+                            <span class="category">{{ $product->category->name ?? 'Catégorie inconnue' }}</span>
+                            <div class="price">{{ number_format($product->price, 2) }} MAD</div>
+                            <a href="#" class="btn btn-green w-100 mt-3">Voir le produit</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-              <div class="col-md-3">
-                <div class="product-card-natural">
-                    <div class="product-img">
-                        <img src="https://d2j6dbq0eux0bg.cloudfront.net/images/20181022/3003382609.jpg">
-                    </div>
-                    <div class="product-body">
-                        <h6>Aloe Vera Naturelle</h6>
-                        <span class="category">Plantes</span>
-                        <div class="price">120 MAD</div>
-                        <a href="#" class="btn btn-green w-100 mt-3">Voir le produit</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="product-card-natural">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
-                    </div>
-                    <div class="product-body">
-                        <h6>Aloe Vera Naturelle</h6>
-                        <span class="category">Plantes</span>
-                        <div class="price">120 MAD</div>
-                        <a href="#" class="btn btn-green w-100 mt-3">Voir le produit</a>
-                    </div>
-                </div>
-            </div>
-
+            @empty
+                <p class="text-center">Aucun produit disponible pour le moment.</p>
+            @endforelse
         </div>
     </div>
 </section>
-
 <!-- Footer -->
 <footer class="py-4 text-center text-white-50">
     <div class="container">
